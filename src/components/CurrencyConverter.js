@@ -15,6 +15,18 @@ const CurrencyConverter = () => {
     });
 
     const [result, setResult] = useState(0)
+    
+    const reset = () => {
+        setChosenPrimaryCurrency('BTC');
+        setChosenSecondaryCurrency('BTC');
+        setAmount(1);
+        setExchangedData({
+            primaryCurrency: 'BTC',
+            secondaryCurrency: 'BTC',
+            exchangeRate: 0
+        });
+        setResult(0);
+    }
 
     const convert = () => {
         const options = {
@@ -28,6 +40,7 @@ const CurrencyConverter = () => {
           };
           
           axios.request(options).then((response) => {
+              console.log(response.data);
             setResult(response.data['Realtime Currency Exchange Rate']['5. Exchange Rate'] * amount);
             setExchangedData({
                 primaryCurrency: chosenPrimaryCurrency,
@@ -38,6 +51,7 @@ const CurrencyConverter = () => {
               console.error(error);
           });
     }
+
     return (
         <div className="currency-converter">
             <h2>Currency Converter</h2>
@@ -57,7 +71,7 @@ const CurrencyConverter = () => {
                                     value={chosenPrimaryCurrency}
                                     className="currency-options"
                                     onChange={(e) => setChosenPrimaryCurrency(e.target.value)}>
-                                    {currencies.map((currency, index) => (<option key={index}>{currency}</option>))}</select>
+                                    {currencies.filter(curr => curr != 'USD').map((currency, index) => (<option key={index}>{currency}</option>))}</select>
                             </td>
                         </tr>
 
@@ -78,7 +92,10 @@ const CurrencyConverter = () => {
                         </tr>
                         <tr>
                             <td></td>
-                            <td><button id="convert-button" onClick={convert}>Convert</button></td>
+                            <td>
+                                <button id="convert-button" className="btnConvert" onClick={convert}>Convert</button>
+                                <button id="convert-reset" className="btnReset" onClick={reset}>Reset</button>
+                            </td>
                             <td></td>
                         </tr>
                     </tbody>

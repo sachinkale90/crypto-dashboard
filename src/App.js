@@ -7,7 +7,7 @@ const App = () => {
       <h1>Crypto Dashboard</h1>
       <div className="app_wrapper">
         <CurrencyConverter />
-        <NewsFeed />
+        {/* <NewsFeed /> */}
       </div>
     </div>
   )

@@ -50,16 +50,28 @@ code {
   border-radius: 10px;
 }
 
-button {
+/* .btnConvert{
   border: none;
   float: right;
   margin: 2px;
 }
 
-button:hover{
-  background-color: #d27750;
-
+.btnConvert:hover{
+  background-color: skyblue;
 }
+
+.btnReset{
+  border: 1px;
+  padding: 10px;
+  float: right;
+  margin: 2px;
+}
+
+.btnReset:hover{
+  background-color: red;
+} */
+
+
 
 .input-box {
   background-color: rgb(218, 227, 238);
