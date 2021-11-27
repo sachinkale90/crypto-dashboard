@@ -9,6 +9,7 @@ const App = () => {
         <CurrencyConverter />
         <NewsFeed />
       </div>
+      $copyright
     </div>
   )
 }
